@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body elegant-color white-text rounded-bottom">
+          <h4 class="card-title">Stories from {{title}}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+  </div>
+  <div class="row">
+    <hr>
+  </div>
+  <div class="row">
+    {%for art in news_articles %}
+    <div class="col-md-6">
+    <div class="card">
+      <div class="view overlay">
+        <img class="card-img-top" src="{{art.urlToImage}}" alt="story image" onerror="this.onerror=null;this.src='https://lousbarandgrill.com/wp-content/uploads/2018/08/news-1.jpg';">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+      <div class="card-body elegant-color white-text rounded-bottom">
+        <h5 class="card-title">{{art.title | truncate(100)}}</h5>
+        {%if art.author%}
+        <p> ~ {{art.author | truncate(100)}}</p>
+        {% endif %}
+        <hr class="hr-light">
+        <p class="card-text white-text mb-4">{{art.description | truncate(200)}}.</p>
+        <p>{{art.time}}</p>
+        <!-- Link -->
+        <a href="{{art.url}}" class="white-text d-flex justify-content-end"><h5>Read more <i class="fas fa-angle-double-right"></i></h5></a>
+      </div>
+    </div>
+    <div class="row">
+      <hr>
+    </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
