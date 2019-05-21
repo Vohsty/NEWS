@@ -1,0 +1,19 @@
+{% macro displaySourceList(sports) %}
+
+    {% for source in sports %}
+    <img class="card-img-top" src="{{source.urlToImage}}" alt="{{source.name}}" onerror="this.onerror=null;this.src='https://lousbarandgrill.com/wp-content/uploads/2018/08/news-1.jpg';">
+        <div class="card" style="text-align: center; margin: 20px;">
+          <div class="card-body  red-text rounded-bottom">
+            <img src=" {{source.urlToImage}}" alt=" {{source.name}}" class="img-responsive">
+                 
+            <a class="activator waves-effect mr-4"><i class="fas fa-share-alt white-text"></i></a>
+            <h4 class="card-title">{{source.name}}</h4>
+            <hr class="hr-light">
+            <p class="card-text  mb-4">{{source.description|truncate(100) }}</p>
+            <a href="/source/{{source.id}}" class="btn btn-primary">Read More..</a>
+          </div>
+        </div>
+        
+    {% endfor %}
+
+{% endmacro %}
