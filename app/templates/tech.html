@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid" >
+        <h2>TECHNOLOGY NEWS</h2>
+        <div class="row">
+            <hr>
+          </div>
+          <div class="row">
+              
+            {%for headline in technology %}
+            <div class="col-md-3">
+              <div class="card">
+                    <div class="view overlay">
+                            <img class="card-img-top" height="200px" src="{{headline.urlToImage}}" alt="story image" onerror="this.onerror=null;this.src='https://www.centrinity.com/wp-content/uploads/2017/07/technews.jpg';">
+                            <a>
+                              <div class="mask rgba-white-slight"></div>
+                            </a>
+                          </div>
+                <div class="card-body elegant-color white-text rounded-bottom">
+                  <a class="activator waves-effect mr-4"><i class="fas fa-share-alt white-text"></i></a>
+                  <h4 class="card-title">{{headline.name}}</h4>
+                  <hr class="hr-light">
+                  <p class="card-text white-text mb-4">{{headline.title  | truncate(200)}}p>
+                  <a href="{{headline.url}}" class="btn btn-primary">Read More..</a>
+                </div>
+              </div>
+              <div class="row">
+                <hr>
+              </div>
+            </div>
+            {% endfor %}
+      </div>
+    </div>
+    {% endblock %}
+    {% block footer %}
+    {% include 'movie.html' %}
+    {% endblock %}
